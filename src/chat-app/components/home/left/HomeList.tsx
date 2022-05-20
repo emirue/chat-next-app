@@ -83,6 +83,10 @@ const HomeList: NextComponentType = () => {
     dispatch({ type: SELECT_LIST_ITEM, payload: item });
   }
 
+  /**
+   * 아이템 활성화 여부
+   * @param item
+   */
   function isActive(item: IfcHomeListItem) {
     return item._id === selectedItem?._id;
   }
