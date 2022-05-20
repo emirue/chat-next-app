@@ -1,5 +1,5 @@
 import type { NextComponentType } from 'next';
-import { LeftSearchWrapper } from '../../styles/home';
+import { LeftSearchWrapper } from '../../../styles/home';
 import { useState } from 'react';
 
 const HomeLeftSearch: NextComponentType = () => {

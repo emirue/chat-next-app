@@ -1,6 +1,6 @@
 import type { NextComponentType } from 'next';
-import { LeftHeaderWrapper, LeftHeader } from '../../styles/home';
-import { ButtonPrimary } from '../../styles/buttons';
+import { LeftHeaderWrapper, LeftHeader } from '../../../styles/home';
+import { ButtonPrimary } from '../../../styles/buttons';
 
 const HomeLeftHeader: NextComponentType = () => {
   return (

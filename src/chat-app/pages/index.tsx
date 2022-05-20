@@ -9,9 +9,10 @@ import {
   RightWrap,
   Wrapper,
 } from '../styles/home';
-import HomeLeftHeader from '../components/home/HomeLeftHeader';
-import HomeLeftSearch from '../components/home/HomeLeftSearch';
-import HomeList from '../components/home/HomeList';
+import HomeLeftHeader from '../components/home/left/HomeLeftHeader';
+import HomeLeftSearch from '../components/home/left/HomeLeftSearch';
+import HomeList from '../components/home/left/HomeList';
+import HomeRightHeader from '../components/home/right/HomeRightHeader';
 
 const Home: NextPage = () => {
   return (
@@ -26,7 +27,9 @@ const Home: NextPage = () => {
               <HomeList />
             </LeftBodyWrapper>
           </LeftWrap>
-          <RightWrap>2</RightWrap>
+          <RightWrap>
+            <HomeRightHeader />
+          </RightWrap>
         </BoxWrapper>
         <BoxBottom />
       </Container>

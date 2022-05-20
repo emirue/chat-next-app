@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const HEADER_HEIGHT = 98;
+const SEARCH_HEIGHT = 74;
+const LIST_BOTTOM_HEIGHT = 56;
+
 const Wrapper = styled.div`
   margin: 0;
   padding: 0;
@@ -42,7 +46,7 @@ const LeftWrap = styled.div`
 
 const LeftHeaderWrapper = styled.div`
   width: 100%;
-  height: 98px;
+  height: ${HEADER_HEIGHT}px;
   border-top: 1px solid var(--light);
   border-bottom: 1px solid var(--light);
   padding: 12px 0;
@@ -70,13 +74,13 @@ const LeftHeader = styled.div`
 
 const LeftBodyWrapper = styled.div`
   width: 100%;
-  height: calc(100% - 98px);
+  height: calc(100% - ${HEADER_HEIGHT}px);
   border-right: 1px solid var(--light);
 `;
 
 const LeftSearchWrapper = styled.div`
   width: 100%;
-  height: 74px;
+  height: ${SEARCH_HEIGHT}px;
   padding: 14px;
 
   .input-search {
@@ -97,13 +101,13 @@ const LeftSearchWrapper = styled.div`
 
 const HomeListWrapper = styled.div`
   width: 100%;
-  height: calc(100vh - 98px - 74px - 4px);
+  height: calc(100vh - ${HEADER_HEIGHT}px - ${SEARCH_HEIGHT}px - 4px);
   position: relative;
 `;
 
 const HomeListContainer = styled.div`
   width: 100%;
-  height: calc(100% - 56px);
+  height: calc(100% - ${LIST_BOTTOM_HEIGHT}px);
   overflow-y: auto;
 `;
 
@@ -111,19 +115,23 @@ const HomeListItemWrapper = styled.div`
   width: 100%;
   height: 92px;
   border-top: 1px solid var(--light);
-  padding: 18px 0;
-  background-color: #fafafa;
+  padding: 0;
+  background-color: var(--white);
+  display: flex;
+
   &:last-child {
     border-bottom: 1px solid var(--light);
   }
 
   &.active {
     background-color: #eff2f7;
+    border-top: 1px solid #c1c4ca;
+    border-right: 1px solid #c1c4ca;
 
     &:before {
       content: '';
       display: block;
-      width: 2px;
+      width: 4px;
       height: 100%;
       background-color: var(--primary);
     }
@@ -136,7 +144,7 @@ const HomeListItemWrapper = styled.div`
 
 const HomeListItem = styled.div`
   width: 100%;
-  padding: 0 15px;
+  padding: 18px 15px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -194,7 +202,7 @@ const HomeListBottomWrapper = styled.div`
   left: 0;
   bottom: 5px;
   width: 100%;
-  height: 56px;
+  height: ${LIST_BOTTOM_HEIGHT}px;
   background-color: var(--white);
   color: var(--primary);
   display: flex;
@@ -207,6 +215,47 @@ const RightWrap = styled.div`
   width: 54%;
   height: 100%;
   border-bottom: 1px solid var(--light);
+`;
+
+const RightHeaderWrapper = styled.div`
+  width: 100%;
+  padding: 0 30px;
+  height: ${HEADER_HEIGHT}px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+`;
+
+const RightHeader = styled.div`
+  width: 100%;
+  height: 50px;
+
+  .header-my-name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 11px;
+
+    h3 {
+      font-size: 1.313rem;
+      color: #5f5f5f;
+      margin-right: 8px;
+    }
+
+    .header-my-relation {
+      height: 20px;
+      border-radius: 50px;
+      background-color: #17dfd0;
+      color: var(--white);
+      font-size: 0.563rem;
+      padding: 5px 11px;
+    }
+  }
+
+  .header-my-position {
+    font-size: 0.875rem;
+    color: var(--primary);
+  }
 `;
 
 export {
@@ -226,4 +275,6 @@ export {
   HomeListItem,
   HomeListBottomWrapper,
   RightWrap,
+  RightHeaderWrapper,
+  RightHeader,
 };

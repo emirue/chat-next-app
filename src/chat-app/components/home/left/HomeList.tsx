@@ -5,19 +5,16 @@ import {
   HomeListItemWrapper,
   HomeListItem,
   HomeListBottomWrapper,
-} from '../../styles/home';
+} from '../../../styles/home';
 import classNames from 'classnames';
+import { IfcHomeListItem } from '../IfcHomeListItem';
+import { useSelector, useDispatch } from 'react-redux';
+import { SELECT_LIST_ITEM } from '../../../store/types';
+import { RootState } from '../../../store';
 
-interface HomeListItem {
-  isRead: boolean;
-  isActive: boolean;
-  name: string;
-  time: string;
-  message: string;
-}
-
-const list: HomeListItem[] = [
+const list: IfcHomeListItem[] = [
   {
+    _id: '1',
     isRead: false,
     isActive: true,
     name: '최예슬',
@@ -25,6 +22,7 @@ const list: HomeListItem[] = [
     message: '안녕하세요. 서류지원 합격한 최예슬입니다.',
   },
   {
+    _id: '2',
     isRead: false,
     isActive: false,
     name: 'Shin Ye-Ji(4)',
@@ -32,6 +30,7 @@ const list: HomeListItem[] = [
     message: '안녕하세요. 서류지원 합격한 신예지입니다.',
   },
   {
+    _id: '3',
     isRead: true,
     isActive: false,
     name: '김펀치',
@@ -39,6 +38,7 @@ const list: HomeListItem[] = [
     message: '디자이너 최예슬님을 소개를 좀 부탁드립니다.',
   },
   {
+    _id: '4',
     isRead: true,
     isActive: false,
     name: '이윤호',
@@ -46,6 +46,7 @@ const list: HomeListItem[] = [
     message: '나도 이제 곧 포폴 준비해야하는데 나중에 완료되겠지',
   },
   {
+    _id: '5',
     isRead: true,
     isActive: false,
     name: 'Kim Eun-ji',
@@ -53,6 +54,7 @@ const list: HomeListItem[] = [
     message: '안녕하세요. 헬로네이쳐 UX팀장 김은지 입니다.',
   },
   {
+    _id: '6',
     isRead: true,
     isActive: false,
     name: 'AndrewKim',
@@ -60,6 +62,7 @@ const list: HomeListItem[] = [
     message: '우버에서 최근에 진행한 리디자인에 대하여 설명드리겠습니다.',
   },
   {
+    _id: '7',
     isRead: true,
     isActive: false,
     name: '황지홍',
@@ -69,11 +72,32 @@ const list: HomeListItem[] = [
 ];
 
 const HomeList: NextComponentType = () => {
+  const selectedItem = useSelector((state: RootState) => state.homeList.item);
+  const dispatch = useDispatch();
+
+  /**
+   * 클릭
+   * @param item
+   */
+  function handleClick(item: IfcHomeListItem) {
+    dispatch({ type: SELECT_LIST_ITEM, payload: item });
+  }
+
+  function isActive(item: IfcHomeListItem) {
+    return item._id === selectedItem?._id;
+  }
+
   return (
     <HomeListWrapper>
       <HomeListContainer>
-        {list.map((item: HomeListItem, index: number) => (
-          <HomeListItemWrapper key={index}>
+        {list.map((item: IfcHomeListItem, index: number) => (
+          <HomeListItemWrapper
+            key={index}
+            className={classNames({ active: isActive(item), read: item.isRead })}
+            onClick={() => {
+              handleClick(item);
+            }}
+          >
             <HomeListItem>
               <div className={classNames('avatar-wrap', { read: item.isRead })}>
                 <img src="/icon/ico_user.png" alt="avatar" className="avatar" />
